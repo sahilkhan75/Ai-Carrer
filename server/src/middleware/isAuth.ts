@@ -13,6 +13,7 @@ export const isAuth = async (
     next: NextFunction
 ): Promise<void> => {
     try {
+        console.log("AUTH HEADER:", req.headers.authorization);
         const authHeader = req.headers.authorization;
 
         if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -31,15 +32,16 @@ export const isAuth = async (
         }
 
         const decodedData = jwt.verify(token, process.env.JWT_SEC as string) as JwtPayload;
-
-        if (!decodedData || !decodedData._id) {
+        console.log("DECODED TOKEN:", decodedData);
+        if (!decodedData || !decodedData.id) {
             res.status(401).json({
-                message: "Invali Token",
+                message: "Invalid Token",
             })
             return;
         }
 
-        const user = await User.findById(decodedData._id);
+        const user = await User.findById(decodedData.id);
+        console.log("FOUND USER:", user);
         if (!user) {
             res.status(401).json({
                 message: "user not found ",

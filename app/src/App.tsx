@@ -1,11 +1,38 @@
-import { BrowserRouter, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Login from "./pages/Login";
+import Account from "./pages/Account";
+import { useAppData } from "./context/AppContext";
+import Loading from "./components/Loading";
+import PublicRoutes from "./components/PublicRoutes";
+import ProtactedRoutes from "./components/ProtactedRoutes";
+
 
 const App = () => {
-  return <BrowserRouter>
-    <Routes>
-      <Route path="/" element={ } />
-    </Routes>
-  </BrowserRouter >
+  const { loading } = useAppData();
+  if (loading) {
+    return <Loading />
+  }
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route element={<PublicRoutes />} >
+          <Route path="/login" element={<Login />} />
+        </Route >
+
+        <Route element={<ProtactedRoutes />}>
+          <Route path="/account" element={<Account />} />
+        </Route>
+
+      </Routes>
+      <Footer />
+    </BrowserRouter >
+  );
 };
 
 export default App;
