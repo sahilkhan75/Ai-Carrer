@@ -1,4 +1,4 @@
-import { ArrowRight, Zap } from "lucide-react"
+import { ArrowRight, ChevronRight, Zap } from "lucide-react"
 import { Link } from "react-router-dom"
 import { useAppData } from "../context/AppContext"
 
@@ -33,10 +33,39 @@ export function Hero() {
                         <p className="flex items-center gap-2">
                             Find Best Job <ArrowRight size={16} />
                         </p>
-                    ) : <p className="flex items-center gap-2">
-                        Starts For Free <ArrowRight size={16} /> </p>}
-
+                    ) : (<p className="flex items-center gap-2">
+                        Starts For Free  <ArrowRight size={16} />
+                    </p>
+                    )}
                 </Link>
+                <a href="#features" className="text-sm text-white/45 hover:text-white
+                transition-colors flex items-center gap-1.5 ">
+                    See how it works <ChevronRight size={14} />
+                </a>
+            </div>
+            <p className="text-white/25 text-xs mt-6">
+                First 3 analyses free • No credit card required
+            </p>
+            <div className=" mt-16 glass-card px-8 py-5 flex items-center gap-6 animate-slide-up"
+                style={{ animationDelay: "0.3s" }}>
+                <div className="flex flex-col items-center">
+                    <span className="text-4xl font-black text-gradient" style={{ fontFamily: "'syne',sans-serif" }}>87
+                        <span className="text-[10px] text-white/35 uppercase tracking-widest ">ATS score</span>
+                    </span>
+                </div>
+
+                <div className="h-10 w-px bg-white/10" />
+                <div className="flex flex-col gap-1 text-left">
+                    <span className="text-sm text-emerald-400 font-medium">
+                        ✓ Strong keywords detected
+                    </span>
+                    <span className="text-xs text-yellow-400 font-medium ">
+                        ⚠️ Missing quantified impact
+                    </span>
+                    <span className="text-xs font-medium text-white/40 ">     3 job matches found</span>
+                </div>
+
+
             </div>
         </section >
     )
