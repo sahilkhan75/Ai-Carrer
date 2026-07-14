@@ -1,10 +1,8 @@
-import { Star } from "lucide-react";
+import { CheckCircle2, Star } from "lucide-react";
 import { Features as features } from "../utils"
-import { Icon } from "lucide-react";
-
 
 function Features() {
-    return <section id="#features" className="py-26 px-6 md:px-12 max-w-7xl mx-auto">
+    return <section id="features" className="py-26 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="text-center mb-16 " >
             <span className="feature-pill inline-flex mb-4" >
                 <Star size={11} className="text-indigo-400" /> Everything you need
@@ -23,7 +21,20 @@ function Features() {
                     <Icon size={20} className="text-white" />
                 </div>
 
-                <div></div>
+                <div>
+                    <h3 className="text-3xl font-bold mb-2"
+                        style={{ fontFamily: "'syne',sans-serif" }}>{title}</h3>
+                    <p className="text-white/45 text-sm leading-relaxed ">{desc}</p>
+                </div>
+
+                <ul className="flex flex-col gap-2">
+                    {bullets.map(b => (
+                        <li key={b} className="flex items-center gap-2 text-sm text-white/60">
+                            <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
+                            {b}
+                        </li>
+                    ))}
+                </ul>
 
             </div>
         ))}</div>
